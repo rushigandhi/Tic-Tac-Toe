@@ -1,0 +1,6 @@
+:host{
+    width: 45px;
+    height: 45px;
+    border: solid 1px black;
+    float: left;
+}
