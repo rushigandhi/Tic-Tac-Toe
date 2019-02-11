@@ -8,6 +8,10 @@
 .board {
     clear: both;
 }
+.square{
+    padding: 4.5em;
+}
 .info {
     margin-top: 3em;
+    font-size: 2em;
 }

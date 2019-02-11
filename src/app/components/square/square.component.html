@@ -1,1 +1,6 @@
-<p>{{state}}</p>
+<div *ngIf="state == 'X'">
+        <i style="font-size:2em; color:#bf0000;" class="fas fa-pizza-slice"></i>
+</div>
+<div *ngIf="state == 'O'">
+        <i style="font-size:2em; color:#8db600;" class="fas fa-apple-alt"></i>
+</div>

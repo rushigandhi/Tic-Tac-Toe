@@ -7,21 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  // Null fill an empty array
+  // Null fill an empty array and set variables to default
   squares = Array(9).fill(null);
   currentPlayer  = "X";
   winningPlayer = null;
 
+  // check what player's turn it is
   get currentStatus(){
     if(this.winningPlayer){
-      return `Winner: ${this.winningPlayer}`;
-      window.alert(`THE WINNER IS ${this.winningPlayer}`);
+      return `Winner: ${this.winningPlayer == 'X'? 'Unhealthy': 'Healthy'}`;
     }
     else {
-      return `Player: ${this.currentPlayer}`;
+      return `Player: ${this.currentPlayer == 'X'? 'Unhealthy': 'Healthy'}`;
     }
   }
 
+  // reset to the default variable values
   newGame(){
     // Null fill an empty array
     this.squares = Array(9).fill(null);
@@ -29,6 +30,7 @@ export class BoardComponent implements OnInit {
     this.winningPlayer = null;
   }
 
+  // check if the winning combinations have appeared
   winCheck(): boolean {
     const combinations = [
       // Row winning combinations
@@ -46,15 +48,18 @@ export class BoardComponent implements OnInit {
     return false;
   }
 
+  // Run this everytime someone clicks a box
   play(location){
     console.log(location);
-
-    // When a square is clicked, show a character
+    // When a square is clicked, show an icon
     if(!this.winningPlayer && !this.squares[location]){
       this.squares[location] = this.currentPlayer;
+      // If someone has won, display an alert
       if(this.winCheck()){
         this.winningPlayer = this.currentPlayer;
+        alert(`Winner: ${this.winningPlayer == 'X'? 'Unhealthy': 'Healthy'}`);
       }
+      // Switch players
       if(this.currentPlayer == "X"){
         this.currentPlayer = "O";
       }
