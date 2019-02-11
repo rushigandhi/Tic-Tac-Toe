@@ -12,7 +12,7 @@ import { SquareComponent } from './components/square/square.component';
     SquareComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
