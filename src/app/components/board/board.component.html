@@ -3,7 +3,9 @@
     <app-square class="square" *ngFor="let col of [0,1,2]" [state]="squares[col+row*3]" (click)="play(col+row*3)"></app-square>
   </div>
   <div class="row info">
-    <div class="currentStatus">{{currentStatus}}</div>
+    <div *ngIf="!winningPlayer" class="currentStatus">{{currentStatus}}</div>
+    <div *ngIf="winningPlayer == 'X'" style="color:#bf0000; font-size:2em;" class="currentStatus">{{currentStatus}}</div>
+    <div *ngIf="winningPlayer == 'O'" style="color:#8db600; font-size:2em;" class="currentStatus">{{currentStatus}}</div>
     <button (click)="newGame()">New Game</button>
   </div>
 </div>

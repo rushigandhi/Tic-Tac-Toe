@@ -50,14 +50,12 @@ export class BoardComponent implements OnInit {
 
   // Run this everytime someone clicks a box
   play(location){
-    console.log(location);
     // When a square is clicked, show an icon
     if(!this.winningPlayer && !this.squares[location]){
       this.squares[location] = this.currentPlayer;
       // If someone has won, display an alert
       if(this.winCheck()){
         this.winningPlayer = this.currentPlayer;
-        alert(`Winner: ${this.winningPlayer == 'X'? 'Unhealthy': 'Healthy'}`);
       }
       // Switch players
       if(this.currentPlayer == "X"){
