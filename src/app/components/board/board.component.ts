@@ -11,10 +11,14 @@ export class BoardComponent implements OnInit {
   squares = Array(9).fill(null);
   currentPlayer  = "X";
   winningPlayer = null;
+  noWinnerCounter = 0;
 
   // check what player's turn it is
   get currentStatus(){
-    if(this.winningPlayer){
+    if(this.winningPlayer == '1'){
+      return `NO WINNER`;
+    }
+    else if(this.winningPlayer){
       return `Winner: ${this.winningPlayer == 'X'? 'Unhealthy': 'Healthy'}`;
     }
     else {
@@ -28,6 +32,7 @@ export class BoardComponent implements OnInit {
     this.squares = Array(9).fill(null);
     this.currentPlayer  = "X";
     this.winningPlayer = null;
+    this.noWinnerCounter = 0;
   }
 
   // check if the winning combinations have appeared
@@ -53,6 +58,11 @@ export class BoardComponent implements OnInit {
     // When a square is clicked, show an icon
     if(!this.winningPlayer && !this.squares[location]){
       this.squares[location] = this.currentPlayer;
+      
+      // Check for no winner
+      if(this.noWinnerCounter == 8 && !this.winCheck()){
+        this.winningPlayer = '1';
+      }
       // If someone has won, display an alert
       if(this.winCheck()){
         this.winningPlayer = this.currentPlayer;
@@ -65,6 +75,7 @@ export class BoardComponent implements OnInit {
         this.currentPlayer = "X";
       }
     }
+    this.noWinnerCounter++;
   }
 
   constructor() { }
